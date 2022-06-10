@@ -1,5 +1,4 @@
-import TextField from '@mui/material/TextField';
-// OverridableStringUnion
+import MuiTextField from '@mui/material/TextField';
 
 export interface TextFieldProps {
     onChange?: (e: any) => void,
@@ -11,7 +10,10 @@ export interface TextFieldProps {
     fullWidth?: boolean,
     textHelper?: string,
     classes?: object
-    variant?: 'filled' | 'outlined' | 'standard'
+    label?: string
+    variant?: 'filled' | 'outlined' | 'standard',
+    inputMode?: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+    type?: 'password' | 'text'
 }
 
 const defaultValues: Partial<TextFieldProps> = {
@@ -24,7 +26,8 @@ const defaultValues: Partial<TextFieldProps> = {
 
 const CustomTextField = (props: TextFieldProps) => {
     const styleWithDefault = { ...defaultValues, ...props }
-    return (<TextField
+    return (<MuiTextField
+        label={styleWithDefault.label}
         variant={styleWithDefault.variant}
         id={styleWithDefault.id}
         placeholder={styleWithDefault.hint}
@@ -34,7 +37,33 @@ const CustomTextField = (props: TextFieldProps) => {
         disabled={styleWithDefault.disabled}
         autoFocus={styleWithDefault.focused}
         onChange={styleWithDefault.onChange}
-        classes={styleWithDefault.classes}
+        InputLabelProps={{
+            inputMode: props.inputMode,
+        }}
+        inputProps={{
+            type: props.type
+        }}
+
     />)
 }
-export default CustomTextField
+export const TextField = (props: TextFieldProps) => {
+    return (<CustomTextField
+        {...props}
+        variant='standard'
+    />)
+}
+
+export const OutlineTextField = (props: TextFieldProps) => {
+    return (<CustomTextField
+        {...props}
+        variant='outlined'
+    />)
+}
+
+
+export const FilledTextField = (props: TextFieldProps) => {
+    return (<CustomTextField
+        {...props}
+        variant='filled'
+    />)
+}

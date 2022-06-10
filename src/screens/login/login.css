@@ -1,0 +1,11 @@
+div.loginExtra {
+  flex: 2;
+  margin-left: 50;
+  nav-right: 50;
+  background-color: white;
+}
+
+div.loginMain {
+  flex: 6
+}
+
