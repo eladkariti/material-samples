@@ -8,7 +8,7 @@ import { TextField } from '../../../ui/textField';
 
 
 export const LoginCard = () => {
-    return (<Card variant='elevation'>
+    return (<Card variant='elevation' className='login_fade_out'>
         <CardContent>
             <TextField inputMode='email' label='Email' hint='Enter your email' fullWidth={true} focused={true} />
             <br />

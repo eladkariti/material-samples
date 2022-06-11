@@ -9,3 +9,33 @@ div.loginMain {
   flex: 6
 }
 
+
+.login_fade_out {
+  animation-duration: 1s;
+  animation-name: loginFadeOut;
+  animation-fill-mode: forwards;
+}
+
+.login_slide_in {
+  animation-duration: 1s;
+  animation-name: loginSlideIn;  
+}
+
+@keyframes loginSlideIn {
+  from {
+    margin-left: 500%;
+  }
+  to {
+    margin-left: 0%;
+  }
+}
+
+@keyframes loginFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    height: 0px;
+  }
+}
